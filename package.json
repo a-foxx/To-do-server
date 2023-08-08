@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "if [$NODE_ENV == 'production']; then node functions/script.js; else nodemon functions/script.js; fi",
+    "start": "node functions/script.js",
     "deploy": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
