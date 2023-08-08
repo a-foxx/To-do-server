@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "if [$NODE_ENV == 'production']; then node functions/script.js; else nodemon functions/script.js; fi",
     "deploy": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -20,11 +20,14 @@
     "express": "^4.18.2",
     "json-web-token": "^3.2.0",
     "jsonwebtoken": "^9.0.0",
+    "netlify-cli": "^15.11.0",
+    "netlify-lambda": "^2.0.16",
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "pg": "^8.11.0",
     "react-scripts": "^5.0.1",
     "rimraf": "^5.0.1",
+    "serverless-http": "^3.2.0",
     "uuid": "^9.0.0",
     "validator": "^13.9.0"
   }
