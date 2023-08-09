@@ -1,4 +1,6 @@
-const PORT = process.env.PORT || 8000
+const PORT = process.env.POSTGRES_PORT || 8000
+console.log(process.env.POSTGRES_URL)
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const pool = require('./db')
@@ -19,6 +21,10 @@ app.use(express.json())
 const validateEmailAndPassword = validate.validateEmailAndPassword;
 const validateEmail = validate.validateEmail;
 const validateToDo = validate.validateToDo;
+
+app.get('/', (req, res) => {
+    res.send("Hello World");
+})
 
 // get all todos
 app.get('/getTodos/:userEmail', async (req, res) => {
