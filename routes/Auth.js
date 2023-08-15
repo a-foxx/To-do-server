@@ -4,6 +4,25 @@ const pool = require('../db')
 const validate = require('../validate');
 const router = require('express').Router();
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - email
+ *         - hashed_password
+ *       properties:
+ *         email:
+ *           type: string
+ *           description: user's email address PUBLIC KEY 
+ *         hashed_password:
+ *           type: string
+ *           description: user's hashed password
+ */
+
+
 const validateEmailAndPassword = validate.validateEmailAndPassword;
 
 router.post('/signup', async (req, res) => {

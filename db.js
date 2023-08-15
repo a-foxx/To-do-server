@@ -9,13 +9,11 @@ const devConfig = {
     database: process.env.PG_DB
 }
 
-const proConfig = {
-    connectionString: process.env.DATABASE_URL //heroku
-}
-
 //vercel
 const pool = new Pool({
+
     connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+  
   })
 
 pool.connect((err) => {

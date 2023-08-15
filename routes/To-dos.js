@@ -1,5 +1,8 @@
 const validate = require('../validate.js');
 const router = require('express').Router();
+const pool = require('../db')
+// const cors = require('cors')
+// app.use(cors());
 
 const validateEmail = validate.validateEmail;
 const validateToDo = validate.validateToDo;
