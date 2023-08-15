@@ -1,5 +1,5 @@
-const PORT = process.env.POSTGRES_PORT || 8000
 require('dotenv').config()
+const PORT = process.env.REACT_APP_PORT;
 const express = require('express')
 const app = express()
 const cors = require('cors')
