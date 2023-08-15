@@ -8,6 +8,7 @@ const devConfig = {
     port: process.env.PG_DBPORT,
     database: process.env.PG_DB
 }
+// const pool = new Pool(devConfig)
 
 //vercel
 const pool = new Pool({
@@ -20,6 +21,5 @@ pool.connect((err) => {
     if (err) throw err
     console.log('connected to postgreSQL successfully')
 })
-// const pool = new Pool(devConfig)
 
 module.exports = pool;

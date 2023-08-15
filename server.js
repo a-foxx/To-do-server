@@ -86,6 +86,8 @@ app.use(express.json())
 app.use('/to-do', ToDo)
 app.use('/auth', Auth)
 
+console.log('working')
+
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`))
 
 module.exports = app
