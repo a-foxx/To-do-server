@@ -39,7 +39,7 @@ router.post('/todos', async (req, res) => {
         [user_email, title, progress, date], (error, result) => {
             if (error) {
                 return res.status(500).send({
-                    message: err
+                    message: error
                 })
             }
             res.status(200).send({
