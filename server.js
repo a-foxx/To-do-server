@@ -7,10 +7,18 @@ const swaggerUI = require('swagger-ui-express')
 const swaggerJsDoc = require('swagger-jsdoc')
 const Auth = require('./routes/Auth.js')
 const ToDo = require('./routes/To-dos')
-app.use(cors({
-    origin: 'https://client-8yr1ffaha-a-foxx.vercel.app/', // Replace with your frontend domain
-    credentials: true,
-}));
+
+// cors
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://client-8yr1ffaha-a-foxx.vercel.app");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
+// app.use(cors({
+//     origin: 'https://client-8yr1ffaha-a-foxx.vercel.app', // Replace with your frontend domain
+//     credentials: true,
+// }));
 
 const swaggerDefinition = {
     openapi: '3.0.0',
