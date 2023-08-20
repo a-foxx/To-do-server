@@ -1,6 +1,7 @@
 const validate = require('../validate.js');
 const router = require('express').Router();
 const pool = require('../db')
+import { v4 as uuidv4 } from 'uuid';
 // const cors = require('cors')
 // app.use(cors());
 
@@ -27,16 +28,17 @@ router.get('/getTodos/:userEmail', async (req, res) => {
 // create new todo
 router.post('/todos', async (req, res) => {
     const {user_email, title, progress, date} = req.body
+    const id = uuidv4();
     
     const validationResults = validateToDo(user_email, title);
     if (!validationResults.valid) {
         res.status(500).json({ message: validationResults.error });
         return;
     }
-    
+    // add uuid to the query
     try {
-        const newTodo = await pool.query(`INSERT INTO todos (user_email, title, progress, date) VALUES ($1, $2, $3, $4)`, 
-        [user_email, title, progress, date], (error, result) => {
+        const newTodo = await pool.query(`INSERT INTO todos (id, user_email, title, progress, date) VALUES ($1, $2, $3, $4)`, 
+        [id, user_email, title, progress, date], (error, result) => {
             if (error) {
                 return res.status(500).send({
                     message: error
