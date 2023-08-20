@@ -37,7 +37,7 @@ router.post('/todos', async (req, res) => {
     }
     // add uuid to the query
     try {
-        const newTodo = await pool.query(`INSERT INTO todos (id, user_email, title, progress, date) VALUES ($1, $2, $3, $4)`, 
+        const newTodo = await pool.query(`INSERT INTO todos (id, user_email, title, progress, date) VALUES ($1, $2, $3, $4, $5)`, 
         [id, user_email, title, progress, date], (error, result) => {
             if (error) {
                 return res.status(500).send({
