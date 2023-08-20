@@ -8,7 +8,7 @@ const swaggerJsDoc = require('swagger-jsdoc')
 const Auth = require('./routes/Auth.js')
 const ToDo = require('./routes/To-dos')
 app.use(cors({
-    origin: 'http://localhost:3000', // Replace with your frontend domain
+    origin: 'https://client-8yr1ffaha-a-foxx.vercel.app/', // Replace with your frontend domain
     credentials: true,
 }));
 
