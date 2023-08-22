@@ -8,7 +8,7 @@ CREATE TABLE todos (
     date VARCHAR(300)
 );
 
-CREATE TABLE users (
+CREATE TABLE todousers (
     email TEXT PRIMARY KEY,
     hashed_password VARCHAR(255)
 );

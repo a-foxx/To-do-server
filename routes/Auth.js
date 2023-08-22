@@ -37,7 +37,7 @@ router.post('/signup', async (req, res) => {
     }
 
     try {
-        const signup = await pool.query(`INSERT INTO users (email, hashed_password) VALUES ($1, $2)`, [email, hashedPassword])
+        const signup = await pool.query(`INSERT INTO todousers (email, hashed_password) VALUES ($1, $2)`, [email, hashedPassword])
         const token = jwt.sign({ email }, 'secret', { expiresIn: '1hr' })
         res.json({ email, token })
     } catch (err) {
@@ -60,7 +60,7 @@ router.post('/login', async (req, res) => {
     }
 
     try {
-      const users = await pool.query(`SELECT * FROM users WHERE email = $1`, [email])
+      const users = await pool.query(`SELECT * FROM todousers WHERE email = $1`, [email])
       if (!users.rows.length) return res.status(500).json({ message: 'User does not exist!'})
       const success = await bcrypt.compare(password, users.rows[0].hashed_password)
       const token = jwt.sign({ email }, 'secret', { expiresIn: '1hr' })
