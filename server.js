@@ -9,18 +9,14 @@ const Auth = require('./routes/Auth.js')
 const ToDo = require('./routes/To-dos')
 
 // cors
-
 app.use(cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (e.g., mobile apps or curl requests)
       if (!origin) {
         callback(null, true);
         return;
       }
-  
-      // You can add logic here to dynamically determine if the origin is allowed
-      // For example, you can check a database or some other configuration
-      const isOriginAllowed = true; // Replace this with your logic
+
+      const isOriginAllowed = true;
   
       if (isOriginAllowed) {
         callback(null, origin);
@@ -30,16 +26,7 @@ app.use(cors({
     },
     credentials: true, // Allow cookies and credentials
   }));
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "https://client-cik901414-a-foxx.vercel.app");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-//   });
 
-// app.use(cors({
-//     origin: 'https://client-8yr1ffaha-a-foxx.vercel.app', // Replace with your frontend domain
-//     credentials: true,
-// }));
 
 const swaggerDefinition = {
     openapi: '3.0.0',
@@ -48,7 +35,7 @@ const swaggerDefinition = {
         version: '1.0.0',
         description: 'API documentation for the To-do application',
     },
-    host: 'localhost:8000',
+    host: 'https://server-gilt-two-97.vercel.app/',
     basePath: '/',
     components: {
         schemas: {
@@ -106,11 +93,6 @@ const specs = swaggerJsDoc(options);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 app.use(express.json())
-
-// if(process.env.NODE_ENV === "production") {
-//     // server static content
-//     app.use(express.static(path.join(_dirname, 'client/build')))
-// }
 
 app.use('/to-do', ToDo)
 app.use('/auth', Auth)
